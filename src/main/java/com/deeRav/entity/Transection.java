@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -14,22 +13,30 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Author {
+public class Transection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 30)
-    private String name;
-    @Column(unique = true,length = 30,nullable = false)
-    private String email;
+
+    private String transectionId;
+
+    @ManyToOne
+    @JoinColumn
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn
+    private Book book;
+
+    private int paindAmount;
 
     @CreationTimestamp
     private Date createOn;
     @UpdateTimestamp
     private Date updatedTime;
-    @OneToMany(mappedBy = "author")
-    private List<Book> bookList;
+    @Enumerated(value = EnumType.STRING)
+    private TransectionStatus transectionStatus;
 
 
 

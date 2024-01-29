@@ -34,6 +34,7 @@ public class Student {
     private StudentType status;
     @OneToMany(mappedBy = "student")
     private List<Book>books;
-
+    @OneToMany(mappedBy = "student")
+    private List<Transection> transections;
 
 }

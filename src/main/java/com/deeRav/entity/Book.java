@@ -3,6 +3,8 @@ package com.deeRav.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -25,6 +27,11 @@ public class Book {
     @ManyToOne
     @JoinColumn
     private Student student;
+    @ManyToOne
+    @JoinColumn
+    private Author author;
+    @OneToMany(mappedBy = "book")
+    private List<Transection>transections;
 
 
     
