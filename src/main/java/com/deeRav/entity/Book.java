@@ -1,5 +1,7 @@
 package com.deeRav.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +31,7 @@ public class Book {
     private Student student;
     @ManyToOne
     @JoinColumn
+    @JsonIgnoreProperties("bookList")
     private Author author;
     @OneToMany(mappedBy = "book")
     private List<Transection>transections;
